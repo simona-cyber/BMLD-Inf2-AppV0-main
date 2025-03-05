@@ -11,8 +11,8 @@ Diese App wurde von folgenden Personen entwickelt:
 - Albulena Ibishi (ibishalb@students.zhaw.ch)
 - Simona Flachsmann (flachsim@students.zhaw.ch)
 
-Diese App ist das leere Gerüst für die App-Entwicklung im Modul Informatik 2 (BMLD/ZHAW)
-"""
+Diese App ist ein Notenrechner.
+""" 
 
 
 if st.button("Rechner"):
