@@ -20,7 +20,7 @@ with st.sidebar:
     note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
     add_note = st.button("Note hinzufügen")
-    calculate = st.button("**Durchschnitt berechnen**", border = 4)  
+    calculate = st.button("**Durchschnitt berechnen**")  
 
 if add_note:
     st.session_state.beschreibungen.append(beschreibung)
