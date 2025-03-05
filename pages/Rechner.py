@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 
 st.title("Notenrechner")
 
@@ -13,17 +12,17 @@ if 'gewichtungen' not in st.session_state:
 if 'beschreibungen' not in st.session_state:
     st.session_state.beschreibungen = []
 
-#with st.form("grade_form"):
-#    beschreibung = st.text_input("Fach:")
-#    note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
-#    gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
-#    add_note = st.form_submit_button("Note hinzufügen")
-#    calculate = st.form_submit_button("Durchschnitt berechnen")
+with st.form("grade_form"):
+    beschreibung = st.text_input("Fach:")
+    note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
+    gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
+    add_note = st.form_submit_button("Note hinzufügen")
+    calculate = st.form_submit_button("Durchschnitt berechnen")
 
-#if add_note:
-#    st.session_state.beschreibungen.append(beschreibung)
-#    st.session_state.noten.append(note)
-#    st.session_state.gewichtungen.append(gewichtung)
+if add_note:
+    st.session_state.beschreibungen.append(beschreibung)
+    st.session_state.noten.append(note)
+    st.session_state.gewichtungen.append(gewichtung)
    # st.write(f"Fach: {st.session_state.beschreibungen}")
    # st.write(f"Note: {st.session_state.noten}")
    # st.write(f"Gewichtung: {st.session_state.gewichtungen}")
@@ -36,27 +35,6 @@ with st.sidebar:
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
     add_note = st.button("Note hinzufügen")
     
-    # Auffälliger Button für Durchschnitt berechnen
-    calculate_button = st.markdown("""
-        <style>
-        .calculate-button {
-            background-color: white;
-            color: black;
-            padding: 10px 24px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 12px;
-        }
-        </style>
-        <a href="#" class="calculate-button">Durchschnitt berechnen</a>
-    """, unsafe_allow_html=True)
-
-    calculate = st.button("Durchschnitt berechnen")
-    upload_file = st.file_uploader("CSV-Datei hochladen", type=["csv"])
 
 if add_note:
     st.session_state.beschreibungen.append(beschreibung)
@@ -96,8 +74,6 @@ if calculate:
                 st.markdown(f"<h1 style='color: orange;'>{weighted_average:.2f} 😐</h1>", unsafe_allow_html=True)
             else:
                 st.markdown(f"<h1 style='color: green;'>{weighted_average:.2f} 😃</h1>", unsafe_allow_html=True)
-            # Fortschrittsanzeige
-            st.progress(weighted_average / 6.0)
  
     else:
         st.write("Keine Noten eingegeben.")
