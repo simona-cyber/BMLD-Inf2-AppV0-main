@@ -23,18 +23,19 @@ if add_note:
     st.session_state.beschreibungen.append(beschreibung)
     st.session_state.noten.append(note)
     st.session_state.gewichtungen.append(gewichtung)
-    st.write(f"Beschreibungen: {st.session_state.beschreibungen}")
-    st.write(f"Noten: {st.session_state.noten}")
-    st.write(f"Gewichtungen: {st.session_state.gewichtungen}")
+    st.write(f"Fach: {st.session_state.beschreibungen}")
+    st.write(f"Note: {st.session_state.noten}")
+    st.write(f"Gewichtung: {st.session_state.gewichtungen}")
 
 # Funktion zum Löschen einer spezifischen Note, Gewichtung und Beschreibung
 def delete_entry(index):
+    del st.session_state.beschreibungen[index]
     del st.session_state.noten[index]
     del st.session_state.gewichtungen[index]
 
 # Anzeigen der Noten, Gewichtungen und Beschreibungen mit Lösch-Schaltflächen
-for i, (note, gewichtung) in enumerate(zip(st.session_state.noten, st.session_state.gewichtungen)):
-    st.write(f"Note {i+1}: {note}, Gewichtung: {gewichtung}")
+for i, (beschreibung, note, gewichtung) in enumerate(zip(st.session_state.noten, st.session_state.gewichtungen)):
+    st.write(f"Fach: {beschreibung}, Note: {note}, Gewichtung: {gewichtung}")
     if st.button(f"{i+1} . Note löschen", key=f"delete_{i}"):
         delete_entry(i)
         st.rerun()
