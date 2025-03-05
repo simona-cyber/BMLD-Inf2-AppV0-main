@@ -69,7 +69,7 @@ if calculate:
             st.error("Die Summe der Gewichtungen darf nicht 0 sein.")
         else:
             weighted_average = sum(n * g for n, g in zip(st.session_state.noten, st.session_state.gewichtungen)) / total_weight
-            st.write(f"Gewichteter Durchschnitt: {weighted_average:.2f}")
+            st.write(f"Gewichteter Durchschnitt:")
             if weighted_average < 4.0:
                 st.markdown(f"<h1 style='color: red;'>{weighted_average:.2f} 😢</h1>", unsafe_allow_html=True)
             elif 4.0 <= weighted_average < 4.5:
