@@ -24,10 +24,11 @@ if add_note:
 
 if calculate:
     if st.session_state.noten and st.session_state.gewichtungen:
-        if sum(st.session_state.gewichtungen) == 0.0:
+        total_weight = sum(st.session_state.gewichtungen)
+        if total_weight == 0.0:
             st.error("Die Summe der Gewichtungen darf nicht 0 sein.")
         else:
-            weighted_average = sum(n * g for n, g in zip(st.session_state.noten, st.session_state.gewichtungen))
+            weighted_average = sum(n * g for n, g in zip(st.session_state.noten, st.session_state.gewichtungen)) / total_weight
             st.write(f"Gewichteter Durchschnitt: {weighted_average:.2f}")
             if weighted_average < 4.0:
                 st.markdown(f"<h1 style='color: red;'>{weighted_average:.2f}</h1>", unsafe_allow_html=True)
