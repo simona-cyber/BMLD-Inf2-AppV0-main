@@ -41,11 +41,6 @@ if add_note:
     st.session_state.noten.append(note)
     st.session_state.gewichtungen.append(gewichtung)
 
-if upload_file:
-    df = pd.read_csv(upload_file)
-    st.session_state.beschreibungen.extend(df['Fach'].tolist())
-    st.session_state.noten.extend(df['Note'].tolist())
-    st.session_state.gewichtungen.extend(df['Gewichtung'].tolist())
 
 # Funktion zum Löschen einer spezifischen Note, Gewichtung und Beschreibung
 def delete_entry(index):
