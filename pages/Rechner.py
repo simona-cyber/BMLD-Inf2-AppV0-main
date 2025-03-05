@@ -24,7 +24,7 @@ if add_note:
 
 if calculate:
     if st.session_state.noten and st.session_state.gewichtungen:
-        if sum(st.session_state.gewichtungen) != 1.0:
+        if sum(st.session_state.gewichtungen) == 0.0:
             st.error("Die Gewichtungen müssen insgesamt 1.0 ergeben.")
         else:
             weighted_average = sum(n * g for n, g in zip(st.session_state.noten, st.session_state.gewichtungen))
