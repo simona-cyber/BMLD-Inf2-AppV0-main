@@ -17,15 +17,8 @@ with st.form("grade_form"):
     note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
     add_note = st.form_submit_button("Note hinzufügen")
-    calculate = st.form_submit_button("Durchschnitt berechnen")
+    calculate = st.form_submit_button("**Durchschnitt berechnen**")
 
-if add_note:
-    st.session_state.beschreibungen.append(beschreibung)
-    st.session_state.noten.append(note)
-    st.session_state.gewichtungen.append(gewichtung)
-   # st.write(f"Fach: {st.session_state.beschreibungen}")
-   # st.write(f"Note: {st.session_state.noten}")
-   # st.write(f"Gewichtung: {st.session_state.gewichtungen}")
 
 # Seitenleiste für Eingabefelder
 with st.sidebar:
