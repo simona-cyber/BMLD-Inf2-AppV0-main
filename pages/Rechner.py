@@ -11,7 +11,7 @@ if 'gewichtungen' not in st.session_state:
     st.session_state.gewichtungen = []
 
 with st.form("grade_form"):
-    note = st.number_input("Geben Sie Ihre Note ein:", min_value=1.0, max_value=6.0, step=0.01)
+    note = st.number_input("Geben Sie Ihre Note ein:", min_value=1.0, max_value=6.0, step=0.25)
     gewichtung = st.number_input("Geben Sie die Gewichtung der Note ein:", min_value=1.0, max_value=10.0, step=1.0)
     add_note = st.form_submit_button("Note hinzufügen")
     calculate = st.form_submit_button("Durchschnitt berechnen")
