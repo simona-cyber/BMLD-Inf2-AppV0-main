@@ -54,6 +54,8 @@ if calculate:
                 st.markdown(f"<h1 style='color: orange;'>{weighted_average:.2f} 😐</h1>", unsafe_allow_html=True)
             else:
                 st.markdown(f"<h1 style='color: green;'>{weighted_average:.2f} 😃</h1>", unsafe_allow_html=True)
+            # Fortschrittsanzeige
+            st.progress(weighted_average / 6.0)
     else:
         st.write("Keine Noten eingegeben.")
 
