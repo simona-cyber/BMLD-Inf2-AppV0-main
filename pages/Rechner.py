@@ -23,9 +23,9 @@ if add_note:
     st.session_state.beschreibungen.append(beschreibung)
     st.session_state.noten.append(note)
     st.session_state.gewichtungen.append(gewichtung)
-    st.write(f"Fach: {st.session_state.beschreibungen}")
-    st.write(f"Note: {st.session_state.noten}")
-    st.write(f"Gewichtung: {st.session_state.gewichtungen}")
+   # st.write(f"Fach: {st.session_state.beschreibungen}")
+   # st.write(f"Note: {st.session_state.noten}")
+   # st.write(f"Gewichtung: {st.session_state.gewichtungen}")
 
 # Funktion zum Löschen einer spezifischen Note, Gewichtung und Beschreibung
 def delete_entry(index):
