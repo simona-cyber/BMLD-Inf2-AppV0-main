@@ -27,7 +27,13 @@ def delete_entry(index):
     del st.session_state.noten[index]
     del st.session_state.gewichtungen[index]
 
-# Anzeigen der Noten und Gewichtungen
+# Anzeigen der Noten und Gewichtungen mit Lösch-Schaltflächen
+for i, (note, gewichtung) in enumerate(zip(st.session_state.noten, st.session_state.gewichtungen)):
+    st.write(f"Note {i+1}: {note}, Gewichtung: {gewichtung}")
+    if st.button(f"Löschen {i+1}", key=f"delete_{i}"):
+        delete_entry(i)
+        st.experimental_rerun()
+        
 if calculate:
     if st.session_state.noten and st.session_state.gewichtungen:
         total_weight = sum(st.session_state.gewichtungen)
