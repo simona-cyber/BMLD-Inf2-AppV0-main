@@ -13,20 +13,41 @@ if 'gewichtungen' not in st.session_state:
 if 'beschreibungen' not in st.session_state:
     st.session_state.beschreibungen = []
 
-with st.form("grade_form"):
+#with st.form("grade_form"):
+#    beschreibung = st.text_input("Fach:")
+#    note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
+#    gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
+#    add_note = st.form_submit_button("Note hinzufügen")
+#    calculate = st.form_submit_button("Durchschnitt berechnen")
+
+#if add_note:
+#    st.session_state.beschreibungen.append(beschreibung)
+#    st.session_state.noten.append(note)
+#    st.session_state.gewichtungen.append(gewichtung)
+   # st.write(f"Fach: {st.session_state.beschreibungen}")
+   # st.write(f"Note: {st.session_state.noten}")
+   # st.write(f"Gewichtung: {st.session_state.gewichtungen}")
+
+# Seitenleiste für Eingabefelder
+with st.sidebar:
+    st.header("Noteneingabe")
     beschreibung = st.text_input("Fach:")
     note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
-    add_note = st.form_submit_button("Note hinzufügen")
-    calculate = st.form_submit_button("Durchschnitt berechnen")
+    add_note = st.button("Note hinzufügen")
+    calculate = st.button("Durchschnitt berechnen")
+    upload_file = st.file_uploader("CSV-Datei hochladen", type=["csv"])
 
 if add_note:
     st.session_state.beschreibungen.append(beschreibung)
     st.session_state.noten.append(note)
     st.session_state.gewichtungen.append(gewichtung)
-   # st.write(f"Fach: {st.session_state.beschreibungen}")
-   # st.write(f"Note: {st.session_state.noten}")
-   # st.write(f"Gewichtung: {st.session_state.gewichtungen}")
+
+if upload_file:
+    df = pd.read_csv(upload_file)
+    st.session_state.beschreibungen.extend(df['Fach'].tolist())
+    st.session_state.noten.extend(df['Note'].tolist())
+    st.session_state.gewichtungen.extend(df['Gewichtung'].tolist())
 
 # Funktion zum Löschen einer spezifischen Note, Gewichtung und Beschreibung
 def delete_entry(index):
