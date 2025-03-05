@@ -35,6 +35,26 @@ with st.sidebar:
     note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
     add_note = st.button("Note hinzufügen")
+    
+    # Auffälliger Button für Durchschnitt berechnen
+    calculate_button = st.markdown("""
+        <style>
+        .calculate-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        </style>
+        <a href="#" class="calculate-button">Durchschnitt berechnen</a>
+    """, unsafe_allow_html=True)
+    
     calculate = st.button("Durchschnitt berechnen")
     upload_file = st.file_uploader("CSV-Datei hochladen", type=["csv"])
 
