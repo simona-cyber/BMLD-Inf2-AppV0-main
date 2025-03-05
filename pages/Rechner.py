@@ -41,7 +41,7 @@ with st.sidebar:
         <style>
         .calculate-button {
             background-color: #4CAF50;
-            color: white;
+            color: darkgreen;
             padding: 10px 24px;
             text-align: center;
             text-decoration: none;
@@ -54,7 +54,7 @@ with st.sidebar:
         </style>
         <a href="#" class="calculate-button">Durchschnitt berechnen</a>
     """, unsafe_allow_html=True)
-    
+
     calculate = st.button("Durchschnitt berechnen")
     upload_file = st.file_uploader("CSV-Datei hochladen", type=["csv"])
 
