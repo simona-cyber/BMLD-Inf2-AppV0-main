@@ -33,8 +33,7 @@ with st.sidebar:
     beschreibung = st.text_input("Fach:")
     note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
-    add_note = st.button("Note hinzufügen")
-    
+    add_note = st.button("Note hinzufügen")  
 
 if add_note:
     st.session_state.beschreibungen.append(beschreibung)
@@ -62,7 +61,7 @@ if calculate:
             st.error("Die Summe der Gewichtungen darf nicht 0 sein.")
         else:
             weighted_average = sum(n * g for n, g in zip(st.session_state.noten, st.session_state.gewichtungen)) / total_weight
-            st.write(f"Gewichteter Durchschnitt:")
+            st.write(f"Notendurchschnitt:")
             if weighted_average < 4.0:
                 st.markdown(f"<h1 style='color: red;'>{weighted_average:.2f} 😢</h1>", unsafe_allow_html=True)
             elif 4.0 <= weighted_average < 4.5:
