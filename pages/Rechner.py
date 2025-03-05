@@ -34,7 +34,7 @@ def delete_entry(index):
     del st.session_state.gewichtungen[index]
 
 # Anzeigen der Noten, Gewichtungen und Beschreibungen mit Lösch-Schaltflächen
-for i, (beschreibung, note, gewichtung) in enumerate(zip(st.session_state.noten, st.session_state.gewichtungen)):
+for i, (beschreibung, note, gewichtung) in enumerate(zip(st.session_state.beschreibungen, st.session_state.noten, st.session_state.gewichtungen)):
     st.write(f"Fach: {beschreibung}, Note: {note}, Gewichtung: {gewichtung}")
     if st.button(f"{i+1} . Note löschen", key=f"delete_{i}"):
         delete_entry(i)
