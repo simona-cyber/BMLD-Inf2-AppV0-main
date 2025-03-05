@@ -12,13 +12,6 @@ if 'gewichtungen' not in st.session_state:
 if 'beschreibungen' not in st.session_state:
     st.session_state.beschreibungen = []
 
-with st.form("grade_form"):
-    beschreibung = st.text_input("Fach:")
-    note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
-    gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
-    add_note = st.form_submit_button("Note hinzufügen")
-    calculate = st.form_submit_button("**Durchschnitt berechnen**")
-
 
 # Seitenleiste für Eingabefelder
 with st.sidebar:
@@ -26,7 +19,8 @@ with st.sidebar:
     beschreibung = st.text_input("Fach:")
     note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
-    add_note = st.button("Note hinzufügen")  
+    add_note = st.button("Note hinzufügen")
+    calculate = st.button("**Durchschnitt berechnen**")  
 
 if add_note:
     st.session_state.beschreibungen.append(beschreibung)
