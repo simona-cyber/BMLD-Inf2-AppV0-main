@@ -22,6 +22,12 @@ if add_note:
     st.write(f"Noten: {st.session_state.noten}")
     st.write(f"Gewichtungen: {st.session_state.gewichtungen}")
 
+# Funktion zum Löschen einer spezifischen Note und Gewichtung
+def delete_entry(index):
+    del st.session_state.noten[index]
+    del st.session_state.gewichtungen[index]
+
+# Anzeigen der Noten und Gewichtungen
 if calculate:
     if st.session_state.noten and st.session_state.gewichtungen:
         total_weight = sum(st.session_state.gewichtungen)
