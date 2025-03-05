@@ -32,7 +32,7 @@ for i, (note, gewichtung) in enumerate(zip(st.session_state.noten, st.session_st
     st.write(f"Note {i+1}: {note}, Gewichtung: {gewichtung}")
     if st.button(f"{i+1} . Note löschen", key=f"delete_{i}"):
         delete_entry(i)
-        st.experimental_rerun()
+        st.rerun()
 
 if calculate:
     if st.session_state.noten and st.session_state.gewichtungen:
