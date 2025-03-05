@@ -4,15 +4,18 @@ st.title("Notenrechner")
 
 st.write("Mit diesem Rechner könnt ihr Eure Noten berechnen lassen!")
 
-# Initialisiere die Liste 'noten' in der Session State, falls sie noch nicht existiert
+# Initialisiere die Liste 'noten', 'gewichtungen' und 'beschreibungen' in der Session State, falls sie noch nicht existiert
 if 'noten' not in st.session_state:
     st.session_state.noten = []
 if 'gewichtungen' not in st.session_state:
     st.session_state.gewichtungen = []
+if 'beschreibungen' not in st.session_state:
+    st.session_state.beschreibungen = []
 
 with st.form("grade_form"):
-    note = st.number_input("Geben Sie Ihre Note ein:", min_value=1.0, max_value=6.0, step=0.25)
-    gewichtung = st.number_input("Geben Sie die Gewichtung der Note ein:", min_value=1.0, max_value=10.0, step=1.0)
+    beschreibung = st.text_input("Fach:")
+    note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
+    gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
     add_note = st.form_submit_button("Note hinzufügen")
     calculate = st.form_submit_button("Durchschnitt berechnen")
 
