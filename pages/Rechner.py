@@ -40,8 +40,8 @@ with st.sidebar:
     calculate_button = st.markdown("""
         <style>
         .calculate-button {
-            background-color: #4CAF50;
-            color: darkgreen;
+            background-color: white;
+            color: black;
             padding: 10px 24px;
             text-align: center;
             text-decoration: none;
