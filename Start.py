@@ -5,7 +5,7 @@ from utils.data_manager import DataManager
 st.title("Meine erste Streamlit App")
 
 # Initialisierung des Data Managers (hier mit Verbindung zu SwitchDrive)
-data_manager = DataManager(fs_protocol='webdav', fs_root_folder="BMLD_App_DB")  
+data_manager = DataManager(fs_protocol='webdav', fs_root_folder="Albumona")  
 
 # Laden der Daten
 data_manager.load_app_data(
