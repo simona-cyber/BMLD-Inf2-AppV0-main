@@ -1,9 +1,7 @@
-import streamlit as st
+
 import pandas as pd
 from utils.data_manager import DataManager
 from utils.login_manager import LoginManager
-
-st.title("Meine erste Streamlit App")
 
 # Initialisierung des Data Managers (hier mit Verbindung zu SwitchDrive)
 data_manager = DataManager(fs_protocol='webdav', fs_root_folder="Albumona") 
@@ -20,7 +18,11 @@ data_manager.load_user_data(
     parse_dates = ['timestamp']
     )
 
+import streamlit as st
+
 # !! WICHTIG: Eure Emails müssen in der App erscheinen!!
+
+st.title("Meine erste Streamlit App")
 
 # Streamlit über den Text unten direkt in die App - cool!
 """
