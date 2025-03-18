@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from utils.data_manager import DataManager
 
 st.title("Meine erste Streamlit App")
 
