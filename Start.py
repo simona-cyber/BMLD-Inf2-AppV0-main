@@ -4,6 +4,17 @@ from utils.data_manager import DataManager
 
 st.title("Meine erste Streamlit App")
 
+# Initialisierung des Data Managers (hier mit Verbindung zu SwitchDrive)
+data_manager = DataManager(fs_protocol='webdav', fs_root_folder="BMLD_App_DB")  
+
+# Laden der Daten
+data_manager.load_app_data(
+    session_state_key='data_df', 
+    file_name='data.csv', 
+    initial_value = pd.DataFrame(), 
+    parse_dates = ['timestamp']
+    )
+
 # !! WICHTIG: Eure Emails müssen in der App erscheinen!!
 
 # Streamlit über den Text unten direkt in die App - cool!
