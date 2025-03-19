@@ -1,6 +1,7 @@
 from datetime import datetime
 # ====== Start Login Block ======
 from utils.login_manager import LoginManager
+from utils.data_manager import DataManager
 LoginManager().go_to_login('Start.py') 
 # ====== End Login Block ======
 
@@ -26,7 +27,11 @@ with st.sidebar:
     note = st.number_input("Note:", min_value=1.0, max_value=6.0, step=0.25)
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
     add_note = st.button("Note hinzufügen")
-    calculate = st.button("**Durchschnitt berechnen**")  
+    calculate = st.button("**Durchschnitt berechnen**") 
+
+    # Speichern des neuen Eintrags
+    from utils.data_manager import DataManager
+    DataManager().append_record(session_state_key='data_df', record_dict=result) 
 
 if add_note:
     st.session_state.beschreibungen.append(beschreibung)
@@ -84,6 +89,7 @@ def calculate_average():
 if calculate:
     try:
         result = calculate_average()
+        DataManager().append_record(session_state_key='data_df', record_dict=result)
         st.write(f"Notendurchschnitt: {result['weighted_average']}")
         st.write(f"Kategorie: {result['category']}")
         st.write(f"Zeitstempel: {result['timestamp']}")
@@ -102,6 +108,3 @@ if st.button("Noten löschen"):
     st.session_state.gewichtungen = []
     st.rerun()
 
-    # Speichern des neuen Eintrags
-    from utils.data_manager import DataManager
-    DataManager().append_record(session_state_key='data_df', record_dict=result)
