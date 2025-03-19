@@ -46,26 +46,57 @@ for i, (beschreibung, note, gewichtung) in enumerate(zip(st.session_state.beschr
         delete_entry(i)
         st.rerun()
 
-if calculate:
-    if st.session_state.noten and st.session_state.gewichtungen:
-        total_weight = sum(st.session_state.gewichtungen)
-        if total_weight == 0.0:
-            st.error("Die Summe der Gewichtungen darf nicht 0 sein.")
-        else:
-            weighted_average = sum(n * g for n, g in zip(st.session_state.noten, st.session_state.gewichtungen)) / total_weight
-            st.write(f"Notendurchschnitt:")
-            if weighted_average < 4.0:
-                st.markdown(f"<h1 style='color: red;'>{weighted_average:.2f} 😢</h1>", unsafe_allow_html=True)
-            elif 4.0 <= weighted_average < 4.5:
-                st.markdown(f"<h1 style='color: orange;'>{weighted_average:.2f} 😐</h1>", unsafe_allow_html=True)
-            else:
-                st.markdown(f"<h1 style='color: green;'>{weighted_average:.2f} 😃</h1>", unsafe_allow_html=True)
- 
+def calculate_average():
+    """
+    Calculate the weighted average and return a dictionary with inputs, weighted average, category, and timestamp.
+
+    Returns:
+        dict: A dictionary containing the inputs, calculated weighted average, category, and timestamp.
+    """
+    if not st.session_state.noten or not st.session_state.gewichtungen:
+        raise ValueError("Es müssen Noten und Gewichtungen eingegeben werden.")
+
+    total_weight = sum(st.session_state.gewichtungen)
+    if total_weight == 0:
+        raise ValueError("Die Summe der Gewichtungen darf nicht 0 sein.")
+
+    weighted_average = sum(n * g for n, g in zip(st.session_state.noten, st.session_state.gewichtungen)) / total_weight
+
+    if weighted_average < 4.0:
+        category = 'Nicht bestanden'
+    elif 4.0 <= weighted_average < 4.5:
+        category = 'Bestanden'
     else:
-        st.write("Keine Noten eingegeben.")
+        category = 'Gut bestanden'
+
+    result_dict = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "noten": st.session_state.noten,
+        "gewichtungen": st.session_state.gewichtungen,
+        "beschreibungen": st.session_state.beschreibungen,
+        "weighted_average": round(weighted_average, 2),
+        "category": category,
+    }
+
+    return result_dict
+
+if calculate:
+    try:
+        result = calculate_average()
+        st.write(f"Notendurchschnitt: {result['weighted_average']}")
+        st.write(f"Kategorie: {result['category']}")
+        st.write(f"Zeitstempel: {result['timestamp']}")
+        if result['weighted_average'] < 4.0:
+            st.markdown(f"<h1 style='color: red;'>{result['weighted_average']} 😢</h1>", unsafe_allow_html=True)
+        elif 4.0 <= result['weighted_average'] < 4.5:
+            st.markdown(f"<h1 style='color: orange;'>{result['weighted_average']} 😐</h1>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<h1 style='color: green;'>{result['weighted_average']} 😃</h1>", unsafe_allow_html=True)
+    except ValueError as e:
+        st.error(str(e))
 
 if st.button("Noten löschen"):
     st.session_state.beschreibungen = []
     st.session_state.noten = []
     st.session_state.gewichtungen = []
-    st.rerun() 
+    st.rerun()
