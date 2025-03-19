@@ -28,7 +28,10 @@ with st.sidebar:
     gewichtung = st.number_input("Gewichtung:", min_value=1.0, max_value=10.0, step=1.0)
     add_note = st.button("Note hinzufügen")
     calculate = st.button("**Durchschnitt berechnen**") 
-   
+
+    # Speichern des neuen Eintrags
+    from utils.data_manager import DataManager
+    
 
 if add_note:
     st.session_state.beschreibungen.append(beschreibung)
@@ -104,4 +107,3 @@ if st.button("Noten löschen"):
     st.session_state.noten = []
     st.session_state.gewichtungen = []
     st.rerun()
-
