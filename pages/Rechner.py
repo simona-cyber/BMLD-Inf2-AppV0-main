@@ -101,3 +101,6 @@ if st.button("Noten löschen"):
     st.session_state.noten = []
     st.session_state.gewichtungen = []
     st.rerun()
+
+    # Speichern des neuen Eintrags
+    DataManager().append_record(session_state_key='data_df', record_dict=result)
