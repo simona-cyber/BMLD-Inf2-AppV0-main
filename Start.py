@@ -34,8 +34,8 @@ Diese App ist ein Notenrechner.
 """ 
 
 
-if st.button("Rechner"):
-    st.switch_page("pages/1_Rechner.py")
+if st.button("Notenrechner"):
+    st.switch_page("pages/1_Notenrechner.py")
 if st.button("Notendurchschnitte"):
     st.switch_page("pages/2_Notendurchschnitte.py")
 if st.button("Grafik"):
