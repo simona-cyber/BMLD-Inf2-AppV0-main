@@ -16,5 +16,5 @@ if data_df.empty:
 
 
 # Notendurchschnitte
-st.line_chart(data=data_df.set_index('timestamp')['noten'], use_container_width=True)
+st.line_chart(data=data_df.set_index('beschreibung')['weighted_average'], use_container_width=True)
 st.caption('Noten')
