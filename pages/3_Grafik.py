@@ -18,3 +18,8 @@ if data_df.empty:
 # Notendurchschnitte
 st.line_chart(data=data_df.set_index('beschreibungen')['weighted_average'], use_container_width=True)
 st.caption('Noten')
+
+#category
+st.line_chart(data=data_df.set_index('category')['weighted_average'],
+                use_container_width=True)
+st.caption('Kategorien')
