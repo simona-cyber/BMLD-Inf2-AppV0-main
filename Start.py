@@ -38,3 +38,5 @@ if st.button("Rechner"):
     st.switch_page("pages/Rechner.py")
 if st.button("Notendurchschnitte"):
     st.switch_page("pages/Notendurchschnitte.py")
+if st.button("Grafik"):
+    st.switch_page("pages/Grafik.py")
