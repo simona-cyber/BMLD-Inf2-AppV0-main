@@ -20,6 +20,6 @@ st.line_chart(data=data_df.set_index('beschreibungen')['weighted_average'], use_
 st.caption('Noten')
 
 #category
-st.line_chart(data=data_df.set_index('category')['weighted_average'],
+st.line_chart(data=data_df.set_index('category')['beschreibungen'],
                 use_container_width=True)
 st.caption('Kategorien')
