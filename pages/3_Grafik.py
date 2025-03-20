@@ -16,9 +16,9 @@ if data_df.empty:
 
 # Überprüfe, ob die Spalte 'note' im DataFrame vorhanden ist
 if 'note' not in data_df.columns:
-    st.error("Die Spalte 'note' ist im DataFrame nicht vorhanden.")
+    st.error("Die Spalte 'noten' ist im DataFrame nicht vorhanden.")
     st.stop()
 
 # Notendurchschnitte
-st.line_chart(data=data_df.set_index('timestamp')['note'], use_container_width=True)
+st.line_chart(data=data_df.set_index('timestamp')['noten'], use_container_width=True)
 st.caption('Noten')
