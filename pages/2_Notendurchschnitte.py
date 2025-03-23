@@ -23,6 +23,10 @@ if 'timestamp' not in data_df.columns:
     st.error("Die Spalte 'timestamp' ist im DataFrame nicht vorhanden.")
     st.stop()
 
+# Konvertiere die Spalte 'timestamp' in das Datetime-Format
+data_df['timestamp'] = pd.to_datetime(data_df['timestamp'], errors='coerce')
+
+
 # Sort dataframe by timestamp
 data_df = data_df.sort_values('timestamp', ascending=False)
 
