@@ -6,6 +6,7 @@ LoginManager().go_to_login('Start.py')
 # ------------------------------------------------------------
 # Here starts the actual app, which was developed previously
 import streamlit as st
+import pandas as pd  # Füge den Import von pandas hinzu
 
 st.title('Notendurchschnitte')
 
